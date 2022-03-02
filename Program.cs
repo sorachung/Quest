@@ -42,8 +42,12 @@ namespace Quest
             int minAwesomeness = 0;
             int maxAwesomeness = 100;
 
+            // Get player's name to using in Adventurer constructor
+            Console.Write("What is your name, young adventurer? ");
+            string name = Console.ReadLine();
+
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer("Jack");
+            Adventurer theAdventurer = new Adventurer(name);
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
