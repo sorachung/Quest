@@ -59,6 +59,9 @@ namespace Quest
                 ShininessLevel = 8
             };
 
+            // Make an instance of Prize description of prize
+            Prize prize = new Prize("It looks like a potato on a pedestal.");
+
             // Make a new "Adventurer" object using the "Adventurer" class
             Adventurer theAdventurer = new Adventurer(name, robe, hat);
 
@@ -101,6 +104,9 @@ namespace Quest
                 {
                     Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
                 }
+
+                // show the potato medal if they won!
+                prize.ShowPrize(theAdventurer);
 
                 // prompt user whether they want to repeat the quest
                 Console.Write("Would you like to repeat your adventure? (Y/N) ");
