@@ -18,12 +18,16 @@ namespace Quest
         // immutable property for Robe
         public Robe ColorfulRobe { get; }
 
+        // hat property - immutable
+        public Hat Hat { get; }
+
         // A constructor to make a new Adventurer object with a given name
-        public Adventurer(string name, Robe robe)
+        public Adventurer(string name, Robe robe, Hat hat)
         {
             Name = name;
             ColorfulRobe = robe;
             Awesomeness = 50;
+            Hat = hat;
         }
 
 
@@ -55,7 +59,7 @@ namespace Quest
 
         public string GetDescription()
         {
-            return $"The Adventurer {Name} is wearing a colorful robe of {String.Join(", ", ColorfulRobe.Colors)}. It is {ColorfulRobe.Length} inches long.";
+            return $"The Adventurer {Name} is wearing a colorful robe of {String.Join(", ", ColorfulRobe.Colors)}. It is {ColorfulRobe.Length} inches long. Their hat is {Hat.ShininessDescription}.";
         }
     }
 }
