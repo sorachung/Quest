@@ -53,8 +53,17 @@ namespace Quest
                 Length = 80
             };
 
+            // Make a new "Hat" object to pass to Adventurer constructor
+            Hat hat = new Hat()
+            {
+                ShininessLevel = 8
+            };
+
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(name, robe);
+            Adventurer theAdventurer = new Adventurer(name, robe, hat);
+
+            // give description of adventurer
+            Console.WriteLine(theAdventurer.GetDescription());
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
@@ -72,7 +81,6 @@ namespace Quest
 
             while (gameActive)
             {
-                Console.WriteLine(theAdventurer.GetDescription());
                 // Loop through all the challenges and subject the Adventurer to them
                 foreach (Challenge challenge in challenges)
                 {
