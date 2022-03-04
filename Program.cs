@@ -33,6 +33,15 @@ namespace Quest
                 4, 20
             );
 
+            Challenge whatHour = new Challenge("What hour is it?", DateTime.Now.Hour, 50);
+            Challenge bestNumber = new Challenge("What is the best number?", 24, 25);
+
+            Random randomizer = new Random();
+            int num1 = randomizer.Next(1, 101);
+            int num2 = randomizer.Next(1, 101);
+            Challenge multiplication = new Challenge($"What is {num1} x {num2}?", num1 * num2, 150);
+
+
             // "Awesomeness" is like our Adventurer's current "score"
             // A higher Awesomeness is better
 
@@ -76,7 +85,10 @@ namespace Quest
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                whatHour,
+                bestNumber,
+                multiplication
             };
 
             // play game while gameActiv is true;
