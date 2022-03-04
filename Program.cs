@@ -96,6 +96,9 @@ namespace Quest
             // play game while gameActiv is true;
             bool gameActive = true;
 
+            // keep track of successful runs
+            int successfulRuns = 0;
+
             while (gameActive)
             {
                 // create copy of challenges so that we can remove challenges until 5 is remaining without altering the total list of challenges
@@ -119,6 +122,7 @@ namespace Quest
                 if (theAdventurer.Awesomeness >= maxAwesomeness)
                 {
                     Console.WriteLine("YOU DID IT! You are truly awesome!");
+                    successfulRuns++;
                 }
                 else if (theAdventurer.Awesomeness <= minAwesomeness)
                 {
@@ -142,7 +146,7 @@ namespace Quest
                     gameActive = false;
                 }
 
-                theAdventurer.Awesomeness = 50;
+                theAdventurer.Awesomeness = 50 + successfulRuns * 10;
             }
 
         }
