@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 // Every class in the program is defined within the "Quest" namespace
 // Classes within the same namespace refer to one another without a "using" statement
@@ -32,6 +33,15 @@ namespace Quest
 ",
                 4, 20
             );
+
+            Challenge whatHour = new Challenge("What hour is it?", DateTime.Now.Hour, 50);
+            Challenge bestNumber = new Challenge("What is the best number?", 24, 25);
+
+            Random randomizer = new Random();
+            int num1 = randomizer.Next(1, 101);
+            int num2 = randomizer.Next(1, 101);
+            Challenge multiplication = new Challenge($"What is {num1} x {num2}?", num1 * num2, 150);
+
 
             // "Awesomeness" is like our Adventurer's current "score"
             // A higher Awesomeness is better
@@ -76,16 +86,30 @@ namespace Quest
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                whatHour,
+                bestNumber,
+                multiplication
             };
+
 
             // play game while gameActiv is true;
             bool gameActive = true;
 
             while (gameActive)
             {
+                // create copy of challenges so that we can remove challenges until 5 is remaining without altering the total list of challenges
+                List<Challenge> chosenChallenges = new List<Challenge>(challenges);
+
+                while (chosenChallenges.Count > 5)
+                {
+                    chosenChallenges.RemoveAt(randomizer.Next(0, chosenChallenges.Count));
+                }
+
+                chosenChallenges = chosenChallenges.OrderBy(item => randomizer.Next()).ToList();
+
                 // Loop through all the challenges and subject the Adventurer to them
-                foreach (Challenge challenge in challenges)
+                foreach (Challenge challenge in chosenChallenges)
                 {
                     challenge.RunChallenge(theAdventurer);
                 }
@@ -117,6 +141,8 @@ namespace Quest
                 {
                     gameActive = false;
                 }
+
+                theAdventurer.Awesomeness = 50;
             }
 
         }
